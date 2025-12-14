@@ -29,7 +29,7 @@ To install on Windows, download the portable .zip file from the [releases](https
 
 Alternatively, you can install from source, which requires extra dependencies:
 
-- [MSYS2](www.msys2.org)
+- [MSYS2](https://www.msys2.org)
     - mingw-w64-ucrt-x86_64-gtk4
     - mingw-w64-ucrt-x86_64-toolchain
     - base-devel
