@@ -18,12 +18,12 @@ ___
 
 #### Windows
 
-First, make sure you have all the dependencies installed, preferably through [scoop](scoop.sh)
+First, make sure you have all the dependencies installed, preferably through [scoop](https://scoop.sh)
 ```scoop install ffmpeg yt-dlp```
 
 ##### Portable zip (Recommended)
 
-To install on Windows, download the portable .zip file from the [releases](github.com/Blawal0/yt-downloader-gtk/releases/latest/) page, extract it, and run the `ytdl.exe`
+To install on Windows, download the portable .zip file from the [releases](https://github.com/Blawal0/yt-downloader-gtk/releases/latest/) page, extract it, and run the `ytdl.exe`
 
 ##### Installation from Source
 
