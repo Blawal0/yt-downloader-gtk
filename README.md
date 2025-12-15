@@ -98,9 +98,13 @@ git clone https://github.com/Blawal0/yt-downloader-gtk.git
 cd yt-downloader-gtk
 ```
 Then, compile the C file
-```gcc $(pkg-config -cflags gtk4) -o ytdl ytdl.c $(pkg-config -libs gtk4)```
+```
+gcc $(pkg-config -cflags gtk4) -o ytdl ytdl.c $(pkg-config -libs gtk4)
+```
 and run it
-```./ytdl```
+```
+./ytdl
+```
 
 ##### (Optional) Adding the file to your graphical application launcher
 
