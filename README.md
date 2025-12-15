@@ -18,8 +18,14 @@ ___
 
 #### Windows
 
-First, make sure you have all the dependencies installed, preferably through [scoop](https://scoop.sh)
-```scoop install ffmpeg yt-dlp```
+First, make sure you have all the dependencies installed, preferably through `winget`
+```
+winget install ffmpeg yt-dlp
+```
+or [scoop](https://scoop.sh)
+```
+scoop install ffmpeg yt-dlp
+```
 
 ##### Portable zip (Recommended)
 
@@ -34,6 +40,11 @@ Alternatively, you can install from source, which requires extra dependencies:
     - mingw-w64-ucrt-x86_64-toolchain
     - base-devel
     - git
+
+Install these dependencies through the MSYS2 shell
+```
+pacman -S mingw-w64-ucrt-x86_64-gtk4 mingw-w64-ucrt-x86_64-toolchain base-devel git
+```
 
 To install from source, first clone the repository through the MSYS2 shell
 ```
@@ -63,6 +74,21 @@ Linux users have to install from source, which requires extra dependencies:
 - base-devel
 - gcc
 - gtk4
+
+On debian, Ubuntu and their derivatives, these can be installed with
+```
+apt install git base-devel gcc libgtk-4-1
+```
+On Fedora and its derivatives, these can be installed with
+```
+dnf install git base-devel gcc gtk4
+```
+On Arch and its derivatives, install them with
+```
+pacman -S git base-devel gcc gtk4
+```
+For other linux distributions, check the package list for the GTK4 package, `git`, `gcc` and `base-devel` should have identical package names across distributions
+
 
 No other methods of installation are available at the moment, but support for them is planned.
 
