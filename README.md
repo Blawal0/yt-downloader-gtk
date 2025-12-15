@@ -3,6 +3,7 @@
 ## A simple GTK4 Front-End for yt-dlp
 
 Supports mp3, aac, mp4 and mkv file formats
+
 mp4 and mkv are limited to 720p resolution because the Operating System doesn't like it when the app takes a while to download something
 
 ___
