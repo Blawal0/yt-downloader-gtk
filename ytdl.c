@@ -42,6 +42,21 @@ static void DownloadVideo(GtkWidget *dropdown, gpointer user_data)
 	strcat(commandToExecute, videoLink);
 	puts(commandToExecute);
 	system(commandToExecute);
+	GtkWidget *window;
+	window = gtk_window_new();
+	GtkWidget *label;
+	label = gtk_label_new("SUCCESS");
+	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"12\"><b>Video Download Finished</b></span>");
+	GtkWidget *box;
+	box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+	gtk_widget_set_halign(box, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(box, GTK_ALIGN_CENTER);
+	gtk_window_set_child(GTK_WINDOW(window), box);
+	gtk_window_set_default_size(GTK_WINDOW(window), 400, 150);
+	gtk_window_set_title(GTK_WINDOW(window), "Notification");
+	gtk_window_set_resizable(GTK_WINDOW(window), false);
+	gtk_box_append(GTK_BOX(box), label);
+	gtk_window_present(GTK_WINDOW(window));
 }
 
 static void activate(GtkApplication *app, gpointer user_data)
