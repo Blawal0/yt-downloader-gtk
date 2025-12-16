@@ -54,7 +54,7 @@ cd yt-downloader-gtk
 ```
 Then, compile the C file and run it
 ```
-gcc $(pkg-config -cflags gtk4) -o ytdl.exe ytdl.c $(pkg-config -libs gtk4)
+make
 ./ytdl.exe
 ```
 After the program fully loads, close it
