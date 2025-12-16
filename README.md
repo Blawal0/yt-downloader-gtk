@@ -59,7 +59,7 @@ make
 ```
 After the program fully loads, close it
 
-Then, create a temporary folder for the libraries, it can be anywhere within your user folder, and copy all the files from your MSYS2 installation's `/usr/bin` folder to it
+Then, create a temporary folder for the libraries, it can be anywhere within your user folder, and copy all the files from your MSYS2 installation's `/ucrt64/bin` folder to it
 After you copy all the files, add that folder to your PATH through Windows' environment variable config tool, and run the file by double-clicking the `ytdl.exe` file you just compiled
 While the program is running, try to delete all the files in your temporary folder, and skip all the files that can't be deleted because the program is running, this should leave you with only the required libraries.
 After that's done, close the program.
