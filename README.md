@@ -69,42 +69,43 @@ After that's done, run `ytdl.exe`
 
 #### Linux
 
-Linux users have to install from source, which requires extra dependencies:
+Linux users have to install from source using make, which requires extra dependencies:
 
 - git
-- base-devel
 - gcc
 - gtk4
 
 On debian, Ubuntu and their derivatives, these can be installed with
 ```
-apt install git base-devel gcc libgtk-4-1
+apt install git gcc libgtk-4-1 libgtk-4-dev
 ```
 On Fedora and its derivatives, these can be installed with
 ```
-dnf install git base-devel gcc gtk4
+dnf install git gcc gtk4 gtk4-devel
 ```
 On Arch and its derivatives, install them with
 ```
 pacman -S git base-devel gcc gtk4
 ```
-For other linux distributions, check the package list for the GTK4 package, `git`, `gcc` and `base-devel` should have identical package names across distributions
+For other linux distributions, check the package list for the GTK4 package, `git` and `gcc` should have identical package names across distributions
 
+To install the file from make, first clone the repository
 
-No other methods of installation are available at the moment, but support for them is planned.
-
-To install from source, first clone the repository through your Terminal
 ```
 git clone https://github.com/Blawal0/yt-downloader-gtk.git
 cd yt-downloader-gtk
 ```
-Then, compile the C file
+
+install it with
+
 ```
-gcc $(pkg-config -cflags gtk4) -o ytdl ytdl.c $(pkg-config -libs gtk4)
+make
+sudo make install
 ```
 and run it
+
 ```
-./ytdl
+ytdl
 ```
 
 ##### (Optional) Adding the file to your graphical application launcher
@@ -115,12 +116,10 @@ To do that, create a file in your `~/.local/share/applications/` folder called `
 [Desktop Entry]
 Name=Youtube Downloader
 Comment=A GTK4 Front-End for yt-dlp
-Exec=/path/to/file/ytdl
+Exec=/usr/local/bin/ytdl
 Terminal=false
 Type=Application
 ```
-And replace `/path/to/file/ytdl` with the full path to your `ytdl` executable file
-
 ___
 
 ### macOS Support
