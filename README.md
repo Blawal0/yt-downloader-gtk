@@ -125,3 +125,18 @@ ___
 ### macOS Support
 
 While the program should work on macOS, I do not have a mac, so I cannot test if it runs or how to compile it, if I ever get a mac, this section will be updated.
+
+___
+
+### Tested Operating Systems
+
+| **Operating System** | **Results** |
+| :----------------: | :-------: |
+| Windows 11 | Fully Working |
+| Windows 10 | Fully Working |
+| Windows 8.1 | Doesn't Open |
+| Windows 8 | Doesn't Open |
+| Debian 13 | Fully Working |
+| Fedora 43 | Fully Working |
+| Arch Linux | Fully Working |
+
