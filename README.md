@@ -108,6 +108,13 @@ and run it
 ytdl
 ```
 
+To Update the program after installing, `cd` into the directory you cloned the repository to, and run
+```
+git pull
+make
+sudo make install
+```
+
 ##### (Optional) Adding the file to your graphical application launcher
 
 If you're using a graphical application launcher, you might want to add the app to its application list.
