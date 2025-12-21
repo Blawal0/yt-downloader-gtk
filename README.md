@@ -85,6 +85,10 @@ On Arch and its derivatives, install them with
 ```
 pacman -S git base-devel gcc gtk4
 ```
+On openSUSE, install them with
+```
+zypper install git gcc gtk4 gtk4-devel make
+```
 For other linux distributions, check the package list for the GTK4 package, `git` and `gcc` should have identical package names across distributions
 
 To install the file from make, first clone the repository
@@ -135,13 +139,13 @@ ___
 
 ### Tested Operating Systems
 
-| **Operating System** | **Results** |
-| :----------------: | :-------: |
-| Windows 11 | Fully Working |
-| Windows 10 | Fully Working |
-| Windows 8.1 | Doesn't Open |
-| Windows 8 | Doesn't Open |
-| Debian 13 | Fully Working |
-| Fedora 43 | Fully Working |
-| Arch Linux | Fully Working |
-
+| **Operating System** | **Results** | **Notes** |
+| :----------------: | :-------: | :-------|
+| Windows 11 | Fully Working | Requires installing dependencies with terminal |
+| Windows 10 | Fully Working | Requires installing dependencies with PowerShell |
+| Windows 8.1 | Doesn't Open | |
+| Windows 8 | Doesn't Open | |
+| Debian 13 | Fully Working | |
+| Fedora 43 | Fully Working | |
+| Arch Linux | Fully Working | |
+| openSUSE Leap 16 | Fully Working | Requires installing `yt-dlp` with a third-party package manager like [Homebrew](https://brew.sh) |
