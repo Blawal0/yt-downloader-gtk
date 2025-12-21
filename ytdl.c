@@ -5,9 +5,12 @@
 
 char *downloads;
 char *videoLink;
-char filetype[3] = "mp3"; /*Default Selected Filetype*/
 
-const char *filetypes[5] = {"mp3", "aac", "mp4", "mkv", NULL};
+char filetype[4] = "mp3\0"; /*Default Selected Filetype*/
+const char *filetypes[5] = {"mp3\0", "aac\0", "mp4\0", "mkv\0", NULL};
+
+char quality[5] = "720\0"; /*Default Selected Quality*/
+const char *qualityOptions[6] = {"1080\0", "720\0", "480\0", "240\0", "144\0", NULL};
 
 static void GetDownloadLocation(GtkWidget *entry, gpointer user_data)
 {
@@ -26,20 +29,18 @@ static void GetFileType(GtkWidget *dropdown, gpointer user_data)
 	printf("\n%d - %s\n", index, filetype);
 }
 
+static void GetMaxQuality(GtkWidget *selector, gpointer user_data)
+{
+	guint qindex = gtk_drop_down_get_selected(GTK_DROP_DOWN(selector));
+	strcpy(quality, qualityOptions[qindex]);
+	printf("\n%d - %s\n", qindex, quality);
+}
+
 static void DownloadVideo(GtkWidget *dropdown, gpointer user_data)
 {
 	char commandToExecute[999];
-	strcpy(commandToExecute, "yt-dlp --windows-filenames ");
-	if (filetype != "aac" && filetype != "mp3")
-	{
-		strcat(commandToExecute, "-f \"[height<=720]\" ");
-	}
-	strcat(commandToExecute, "-t ");
-	strcat(commandToExecute, filetype);
-	strcat(commandToExecute, " -P ");
-	strcat(commandToExecute, downloads);
-	strcat(commandToExecute, " ");
-	strcat(commandToExecute, videoLink);
+	puts(filetype);
+	sprintf(commandToExecute, "yt-dlp --windows-filenames -f \"[height<=%s]\" -t %s -P %s %s", quality, filetype, downloads, videoLink);
 	puts(commandToExecute);
 	system(commandToExecute);
 	GtkWidget *window;
@@ -56,7 +57,17 @@ static void DownloadVideo(GtkWidget *dropdown, gpointer user_data)
 	gtk_window_set_title(GTK_WINDOW(window), "Notification");
 	gtk_window_set_resizable(GTK_WINDOW(window), false);
 	gtk_box_append(GTK_BOX(box), label);
+	label = gtk_label_new(" "); /*spacer*/
+	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"12\"> </span>");
+	gtk_box_append(GTK_BOX(box), label);
+	GtkWidget *button;
+	button = gtk_button_new();
+	label = gtk_label_new("OK");
+	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"12\"><b>OK</b></span>");
+	gtk_button_set_child(GTK_BUTTON(button), label);
+	gtk_box_append(GTK_BOX(box), button);
 	gtk_window_present(GTK_WINDOW(window));
+	g_signal_connect_swapped(button, "clicked", G_CALLBACK(gtk_window_destroy), window);
 }
 
 static void activate(GtkApplication *app, gpointer user_data)
@@ -110,6 +121,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	GtkWidget *box;
 	GtkEntryBuffer *directory;
 	GtkWidget *dropdown;
+	GtkWidget *qualitySelect;
 
 	window = gtk_application_window_new(app);
 	gtk_window_set_title(GTK_WINDOW(window), "YouTube Downloader");
@@ -157,6 +169,20 @@ static void activate(GtkApplication *app, gpointer user_data)
 	gtk_widget_set_size_request(dropdown, 100, 50);
 	gtk_box_append(GTK_BOX(box), dropdown);
 	g_signal_connect(dropdown, "notify::selected", G_CALLBACK(GetFileType), dropdown);
+
+	label = gtk_label_new(" "); /*spacer*/
+	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"12\"> </span>");
+	gtk_box_append(GTK_BOX(box), label);
+
+	label = gtk_label_new("MaxQuality");
+	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"16\"><b>Max. Quality</b></span>");
+	gtk_box_append(GTK_BOX(box), label);
+
+	qualitySelect = gtk_drop_down_new_from_strings(qualityOptions);
+	gtk_widget_set_size_request(qualitySelect, 100, 50);
+	gtk_box_append(GTK_BOX(box), qualitySelect);
+	gtk_drop_down_set_selected(GTK_DROP_DOWN(qualitySelect), 1);
+	g_signal_connect(qualitySelect, "notify::selected", G_CALLBACK(GetMaxQuality), qualitySelect);
 
 	label = gtk_label_new(" "); /*spacer*/
 	gtk_label_set_markup(GTK_LABEL(label), "<span font=\"12\"> </span>");
