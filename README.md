@@ -140,7 +140,7 @@ ___
 ### Tested Operating Systems
 
 | **Operating System** | **Results** | **Notes** |
-| :----------------: | :-------: | :-------|
+| :----------------: | :-------: | :-------: |
 | Windows 11 | Fully Working | Requires installing dependencies with terminal |
 | Windows 10 | Fully Working | Requires installing dependencies with PowerShell |
 | Windows 8.1 | Doesn't Open | |
